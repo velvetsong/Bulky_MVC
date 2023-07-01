@@ -1,0 +1,94 @@
+﻿@model Company 
+
+
+<form method="post" asp-action="CreateUpdate"  enctype="multipart/form-data">
+    <input asp-for="Id"  hidden/>
+   
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row">
+                <div class="row pb-2">
+                     @*   for you to interogate this Id property, and All Other Product Class properties below
+                  the Property Class must have been already been instantiated in the ProductController 'GET CreateUpdate' Action method*@
+
+
+                    <h2 class="text-primary pl-3">@(Model.Id !=0? "Update" : "Create" ) Company</h2>
+                    <hr />
+                        </div>
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                            @* or you could say  ModelOnly   or  None*@
+                            @*<partial name="_Notification" />  you don't really need this line because errors are already handled in the summary*@
+
+ 
+                                @*  All  the PROPERTIES  listed below will be  POSTED back to the Product Controller for the "Post CreateUpdate"  action method
+                           But the  Id  Property is NOT listed below,  so you need to bring back the value of the Id property by having it as a HIDDEN field at the top*@
+                            <div class="mb-3">
+                                <label asp-for="Name"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="StreetAddress"></label>
+                                <input asp-for="StreetAddress" rows="3" class="form-control"></>
+                                <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="City"></label>
+                                <input asp-for="City" class="form-control" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label asp-for="State"></label>
+                                <input asp-for="State" class="form-control" />
+                                <span asp-validation-for="State" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="PostalCode"></label>
+                                <input asp-for="PostalCode" class="form-control" />
+                                <span asp-validation-for="PostalCode" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="PhoneNumber"></label>
+                                <input asp-for="PhoneNumber" rows="3" class="form-control"></>
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+
+
+                            @*Name:*@
+                            @*<input type="text" name="categoryName" />*@
+
+                        <div class="col-12">
+                            @if (Model.Id != 0)
+                            {
+                                <button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+                            }
+                            else
+                            {
+                                <button type="submit"  class="btn btn-primary" style="width:150px;">Create</button>
+                            }
+
+                            <a asp-controller="Company" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                                Back  to List
+                            </a>
+                        </div>
+                 </div>
+            </div>
+    </div>
+
+
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
+
+

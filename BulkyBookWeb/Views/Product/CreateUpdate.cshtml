@@ -1,0 +1,184 @@
+﻿@*@model Product*@
+@model BulkyBook.Models.ViewModels.ProductVM
+
+
+<form method="post" asp-action="CreateUpdate"  enctype="multipart/form-data">
+    <input asp-for="Product.Id"  hidden/>
+    <input asp-for="Product.ImageUrl" hidden />  @* because on the GET of the CreateUpdate action method,  no VALUE would have been entered YET,
+                                                  And for this GET,  we needed to USE the <input />  tag for to test the upLoadBox 
+                                                    such as --->    <input type="file" id="upLoadBox" name="file" class="form-control" />
+                                                     So we didn't have the opportunity to use  <input asp-for="Product.ImageUrl  for the GET action"*@
+                                                        @*Thus we just  used this <input asp-for="Product.ImageUrl  on the POST CreateUpdate action method*@
+
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row">
+                <div class="row pb-2">
+                     @*   for you to interogate this Id property, and All Other Product Class properties below
+                  the Property Class must have been already been instantiated in the ProductController 'GET CreateUpdate' Action method*@
+
+
+                    <h2 class="text-primary pl-3">@(Model.Product.Id !=0? "Update" : "Create" ) Product</h2>
+                    <hr />
+                        </div>
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                            @* or you could say  ModelOnly   or  None*@
+                            @*<partial name="_Notification" />  you don't really need this line because errors are already handled in the summary*@
+
+                           @*Instead of  saying @Model.Title because we use "@model Product" at the top, we now use i.e.  Product.Title for all Propertes*@
+
+                                @*  All  the PROPERTIES  listed below will be  POSTED back to the Product Controller for the "Post CreateUpdate"  action method
+                           But the  Id  Property is NOT listed below,  so you need to bring back the value of the Id property by having it as a HIDDEN field at the top*@
+                            <div class="mb-3">.
+                                <label asp-for="Product.Title"></label>
+                                <input asp-for="Product.Title" class="form-control" />
+                                <span asp-validation-for="Product.Title" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Product.Description"></label>
+                                <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
+                                <span asp-validation-for="Product.Description" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3   col-6">
+                                <label asp-for="Product.ISBN"></label>
+                                <input asp-for="Product.ISBN" class="form-control" />
+                                <span asp-validation-for="Product.ISBN" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="mb-3  col-6">
+                                <label asp-for="Product.Author"></label>
+                                <input asp-for="Product.Author" class="form-control" />
+                                <span asp-validation-for="Product.Author" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3  col-6">
+                                <label asp-for="Product.ListPrice"></label>
+                                <input asp-for="Product.ListPrice" class="form-control" />
+                                <span asp-validation-for="Product.ListPrice" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3  col-6">
+                                <label asp-for="Product.Price"></label>
+                                <input asp-for="Product.Price" class="form-control" />
+                                <span asp-validation-for="Product.Price" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3  col-6">
+                                <label asp-for="Product.Price50"></label>
+                                <input asp-for="Product.Price50" class="form-control" />
+                                <span asp-validation-for="Product.Price50" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3  col-6">
+                                <label asp-for="Product.Price100"></label>
+                                <input asp-for="Product.Price100" class="form-control" />
+                                <span asp-validation-for="Product.Price100" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Product.ImageUrl"></label>
+                          @*Notice how there is  NO  <input asp-for /> helper here? That's because the ProductController 'POST' CreateUpdate Action method will do that*@
+                                <input type="file" id="upLoadBox" name="file" class="form-control" />
+                            </div>
+
+                            <div class="mb-3  col-6">
+                                <label asp-for="Product.CategoryId"></label>
+                                   @* populating the Product Class CategoryId which was chosen from the DropDown LIST obtained from the Category TABLE ->>
+                            which was done in the 'GET  CreateUpdate'  Action method *@   @*--> here the View is displaying what is populated in the Category List*@
+
+                            @*  So you could say  the   'asp-items helper'    was from the  'GET CreateUpdate Action' method,
+                            and the   'select asp-for helper'   is from the POST  CreateUpdate Action' method*@
+
+                                <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
+                                    <option disabled selected >---- Select Category ----></option>
+                                </select> 
+                                <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3 col-6">
+                                <label asp-for="Product.CoverTypeId"></label>
+                                 @*    Populating the Product Class CoverTypeId which was chosen from the DropDown LIST obtained from the CoverType TABLE ->>
+                            which was done in the 'GET  CreateUpdate'  Action method *@     @*--> here the View is displaying what is populated in the CoverType List*@
+
+                                 @*    So you could say  the  'asp-items helper'    was from the  'GET CreateUpdate Action' method,
+                            and the select   'asp-for helper'   is from the POST  CreateUpdate Action' method*@
+
+                                <select asp-for="Product.CoverTypeId" asp-items="@Model.CoverTypeList" class="form-select">
+                                    <option disabled selected>---- Select Cover Type ----></option>
+                                </select>
+                                <span asp-validation-for="Product.CoverTypeId" class="text-danger"></span>
+                            </div>
+
+                            @*Name:*@
+                            @*<input type="text" name="categoryName" />*@
+
+                        <div class="col-12">
+                            @if (Model.Product.Id != 0)
+                            {
+                                <button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+                            }
+                            else
+                            {
+                                <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px;">Create</button>
+                            }
+
+                            <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                                Back  to List
+                            </a>
+                        </div>
+                 </div>
+            </div>
+
+         <div class="col-2 pt-4">
+                <img src="@Model.Product.ImageUrl"
+                     width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+         </div>
+    </div>
+
+
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+
+    <script>
+        function ValidateInput()
+        {
+            if (document.getElementById("upLoadBox").value=="")
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please Upload an Image!'
+                })
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ]
+        });
+    </script>
+
+
+}
+
+

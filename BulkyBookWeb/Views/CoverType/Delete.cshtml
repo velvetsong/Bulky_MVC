@@ -1,0 +1,35 @@
+﻿@model CoverType
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<form method="post" asp-action="Delete">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Delete Cover Type</h2>
+            <hr />
+        </div>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+        @* or you could say  ModelOnly   or  None*@
+
+        <div class="mb-3">
+            <label asp-for="@Model.Name"></label>
+            <input asp-for="@Model.Name" disabled class="form-control" />
+            @*Name:*@
+            @*<input type="text" name="categoryName" />*@
+        </div>
+
+        <button type="submit" class="btn btn-danger" style="width:150px;">Delete</button>
+        <a asp-controller="CoverType" asp-action="Index" class="btn btn-primary" style="width:150px">
+            Back  to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
+
