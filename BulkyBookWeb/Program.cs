@@ -50,13 +50,15 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
-
-SeedDatabase(); 
+app.UseRouting(); 
 
 app.UseAuthentication();    // this line MUST come BEFORE  Authorization
 
 app.UseAuthorization();
+
+app.UseSession();
+
+SeedDatabase();
 
 app.MapRazorPages();
 app.MapControllerRoute(
