@@ -35,7 +35,6 @@ namespace BulkyBook.DataAccess.DbInitializer
 
             //  if roles are not created,  then we will create admin user as well
 
-
             try
             {
                 if (this.db.Database.GetPendingMigrations().Count() > 0)  //  to see if there are EXISTING Migrations,
