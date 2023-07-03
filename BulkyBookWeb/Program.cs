@@ -56,8 +56,6 @@ app.UseAuthentication();    // this line MUST come BEFORE  Authorization
 
 app.UseAuthorization();
 
-app.UseSession();
-
 SeedDatabase();
 
 app.MapRazorPages();
