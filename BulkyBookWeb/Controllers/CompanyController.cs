@@ -58,21 +58,19 @@ namespace BulkyBookWeb.Controllers
         //Get
         public IActionResult CreateUpdate(int? id)
         {
-            Company company = new ();
-
+            Company company = new Company();
 
             if (id == null || id == 0)
             {
                 // Create New Company
-                return View(company);   //  the Company  Index View  is  "Tightly"  Bound  to the Company Class
             }
             else
             {
 				company = this.db.Company.GetFirstOrDefault(u => u.Id == id);
 				// Update Company
 				// 
-				return View(company);
-			}            
+			}
+            return View(company);   //  the Company  Index View  is  "Tightly"  Bound  to the Company Class
         }
 
         //Post
