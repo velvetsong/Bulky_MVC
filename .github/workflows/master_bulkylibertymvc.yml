@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'bulkyLibertyMVC'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_65087687438B499BA1BF58A37A03C800 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4A1A10D281EB463EA172AF2A5E43A4B2 }}
           package: .
