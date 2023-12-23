@@ -106,8 +106,9 @@ namespace BulkyBookWeb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public IActionResult CreateUpdate(Product obj)
-        public IActionResult CreateUpdate(ProductVM obj,  IFormFile? file)  // coming back, the Product Class has its properties populated from the Product CreateUpdate VIEW
-                                                    // which means, in order the the ProductVM to have "Product" data
+        public IActionResult CreateUpdate(ProductVM obj,  IFormFile? file)  // coming back,
+                                                    // the Product Class has its properties populated from the Product CreateUpdate VIEW
+                                                    // which means, in order for the ProductVM to have "Product" data
                                                     // the Product Class MUST be  Defined as a PROPERTY  in  ProductVM
                   
         {
@@ -154,10 +155,9 @@ namespace BulkyBookWeb.Controllers
                 }
                 else
                 {
-                    this.db.Product.Update(obj.Product);  // this is a TWO STEP process, the Actual Update to the Product DB table is NOT being done in the ProductRepository
-                                                          // remember  the  Product table has NOT YET been formatted with CreateUpdate View values
-                                              //  Step 1) the "Update" call will First Format the Product table from the Product CreateUpdate View values
-                                              //  Step 2) THIS  "Update" call will then use ProductVM's  Product PROPERTY  to  actually update the Product DB table  
+                    this.db.Product.Update(obj.Product);  //  Even though the obj.Product  NOW CONTAINS ALL the Info
+                                                          //  from what was entered in the View, becuase the View formats the ProductVM Object
+                                                          //  you can decide NOT to UPDATE  ALL of the fields, and just some of the columns
                 }
 
                 this.db.Save();    //  the UnitOfWork's  Save() method  call

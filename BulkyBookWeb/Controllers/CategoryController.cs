@@ -62,15 +62,17 @@ namespace BulkyBookWeb.Controllers
             //return View(categories);
             //return View(objCategoryList);
         }
+
         //Get
         public IActionResult Create()
         {
             return View();
-        }
+        } 
 
         //Post
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]    /*  to prevent cross-site  forgery attack,  
+                                       *  and inject the KEY in the form , and the KEY will be validated*/
         public IActionResult Create(Category obj)
         {
             if (obj.Name == obj.DisplayOrder.ToString()) 
@@ -94,7 +96,7 @@ namespace BulkyBookWeb.Controllers
                 this.db.Save();
                 TempData["success"] = "Category was successfully Created";
                 TempData["error"] = string.Empty;
-                return RedirectToAction("Index");
+                return RedirectToAction("Index");    /* return  to the INDEX action method of THIS  CategoryController*/
             }
             return View(obj);
         }
@@ -147,11 +149,14 @@ namespace BulkyBookWeb.Controllers
                 //this.db.Update(obj);   // this uses the ICategoryRepository
                 //this.db.Save();
 
-                //  Now use the UnitOfWork  General  handling of All Repositories
-                this.db.Category.Update(obj);     //  Here  the  Update to Category table within the DB, is Actually being done INSIDE the CategoryRepository
+                //  Now use the UnitOfWork  General  handling of All Repositories, which means, the UnitOfWork is  "Instantiating"  EACH  Repository TYPE
+                this.db.Category.Update(obj);     //  Here  the  Update to Category table within the DB,
+                                                  //  is Actually being done INSIDE the CategoryRepository
+
                                                   //   "obj"  has  ALL the Category CLASS   information
-                                                  //  but handled in TWO STEPS  with Product table
-                this.db.Save();
+                                                  //   But with the  Product CLASS ,  you can decide NOT to Update  ALL the Entered Columns
+
+                this.db.Save();     //  and the ACTUAL "Save"  is being done within UnitOfWork 
                 TempData["success"] = "Category was successfully Updated";
                 TempData["error"] = string.Empty;
                 return RedirectToAction("Index");
@@ -184,14 +189,12 @@ namespace BulkyBookWeb.Controllers
             return View(CategoryFromDb);
         }
 
-
-
         //Post
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(Category obj)
         {
-            //this.db.Categories.Update(obj);   //  this uses the  AppDbContext
+            //this.db.Categories.Remove(obj);   //  this uses the  AppDbContext
             //this.db.SaveChanges();
 
             //this.db.Remove(obj);   //  this uses the  ICategoryRepository

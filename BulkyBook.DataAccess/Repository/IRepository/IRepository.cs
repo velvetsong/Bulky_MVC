@@ -27,6 +27,6 @@ namespace BulkyBook.DataAccess.Repository.IRepository
 
         void RemoveRange(IEnumerable<T> entity);
 
-        T GetFirstOrDefault(Expression<Func<T, bool>> predicate, string? includeNavigationProperties = null);
+        T GetFirstOrDefault(Expression<Func<T, bool>> predicate, string?  includeNavigationProperties = null);
     }
 }

@@ -25,8 +25,8 @@ namespace BulkyBook.DataAccess.Repository
 
         public void Update(Product obj)
         {
-            //  so  here you are  Updating the  LIST  of CoverTypes,  just like you did within the CoverType  CONTROLLER
-            //   Instead of doing a complete UPDATE line below, update one-by-one if  you ONLY need to Update just ONE or TWO columns ?
+            //   Instead of doing a complete UPDATE  in  JUST  ONE   line below,
+            //   you can also   update one-by-one if  you ONLY need to Update just ONE or TWO columns ?
             //this.db.Products.Update(obj);
 
             // Then do this way instead --->
@@ -34,9 +34,9 @@ namespace BulkyBook.DataAccess.Repository
             if (objFromDb != null) {
                 objFromDb.ISBN = obj.ISBN;
                 objFromDb.ListPrice= obj.ListPrice;
-                objFromDb.Price = obj.Price;
-                objFromDb.Price100 = obj.Price100;
-                objFromDb.Price50 = obj.Price50;
+                //objFromDb.Price = obj.Price;
+                //objFromDb.Price100 = obj.Price100;
+                //objFromDb.Price50 = obj.Price50;
                 objFromDb.Author = obj.Author;
                 objFromDb.Description = obj.Description;
                 objFromDb.Title= obj.Title;
@@ -48,7 +48,7 @@ namespace BulkyBook.DataAccess.Repository
                     objFromDb.ImageUrl = obj.ImageUrl;
                 }
 
-                //  The Actual  UPDATE to the  Product table  has NOT  happened yet,  that will be done in the  ProductController
+                //  The Actual  UPDATE   was done  in the above code ,   ONE  column at a time. 
             }
         }
     }

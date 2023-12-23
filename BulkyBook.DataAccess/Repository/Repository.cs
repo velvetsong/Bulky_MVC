@@ -59,7 +59,7 @@ namespace BulkyBook.DataAccess.Repository
         {
             IQueryable<T> query = dbSet;  //   dbSet is the actual table data
             //  must filter the data first
-            query = query.Where(predicate);
+            query = query.AsNoTracking().Where(predicate);
 
             if (includeNavigationProperties != null)
             {
