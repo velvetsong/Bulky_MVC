@@ -7,7 +7,7 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/Company/GetAll"
+            "url": "/company/getall"
         },
         "columns": [
             { "data": "name", "width": "15%" },
