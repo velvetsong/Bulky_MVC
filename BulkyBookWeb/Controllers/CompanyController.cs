@@ -32,7 +32,7 @@ namespace BulkyBookWeb.Controllers
         //[BindProperty]   //   This attribute  says,   get me the value FROM the  UI page Create.cshtml VIEW  @model Company
         //public Company obj { get; set; }   // if you are using  CompanyVM view model , then you do not need this line to store data
 
-        public IEnumerable<Company> Companies { get; set; }
+        //public IEnumerable<Company> Companies { get; set; }
         //List<Company> Companies = new List<Company>();
 
         public IActionResult Index()
@@ -49,10 +49,10 @@ namespace BulkyBookWeb.Controllers
 
             //  Now use the UnitOfWork  General  handling of All Repositories
             //   here you do NOT need the ToList() because you are assigning to an EXISTING defined LIST
-            Companies = this.db.Company.GetAll();
-            return View(Companies);
+            //Companies = this.db.Company.GetAll();
+            //return View(Companies);
 
-            //return View();
+            return View();
             //return View(objCompanyList);
         }
 
@@ -159,7 +159,7 @@ namespace BulkyBookWeb.Controllers
 
         public IActionResult GetAll()
         {
-            var companyList = this.db.Company.GetAll().ToList();
+            var companyList = this.db.Company.GetAll();
 
             return Json(new { data = companyList });
         }
