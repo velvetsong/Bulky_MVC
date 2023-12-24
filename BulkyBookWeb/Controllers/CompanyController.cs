@@ -159,7 +159,7 @@ namespace BulkyBookWeb.Controllers
 
         public IActionResult GetAll()
         {
-            var companyList = this.db.Company.GetAll();
+            var companyList = this.db.Company.GetAll().ToList();
 
             return Json(new { data = companyList });
         }
