@@ -41,7 +41,7 @@ namespace BulkyBook.DataAccess.Repository
         public IEnumerable<T> GetAll(string? includeNavigationProperties = null)
         {
             //  we might want to Query our Data from the Database before doing  IEnumerable,  so use IQueryable
-            IQueryable<T> query = dbSet;  //   dbSet now contains the specific  Model Entity Type, but also now contains the database information as well
+            IQueryable<T> query = this.dbSet;  //   dbSet now contains the specific  Model Entity Type, but also now contains the database information as well
 
             if (includeNavigationProperties != null)
             {
