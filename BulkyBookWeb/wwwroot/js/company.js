@@ -40,15 +40,10 @@ function Delete(url) {
         if (result.isConfirmed) {
             $.ajax({
                 url: url,
-                type: 'DELETE',       //  because within the CompanyController  we have  HTTPDelete   API  action method
-                success: function (data) {    //  the  "data"  here is the  "message" we get from the "success" or "error" from the CompanyController
-                    if (data.success) {
-                        dataTable.ajax.reload();
-                        toastr.success(data.message);
-                    }
-                    else {
-                        toastr.error(data.message);
-                    }
+                type: 'DELETE',
+                success: function (data) {
+                    dataTable.ajax.reload();
+                    toastr.success(data.message);
                 }
             })
         }
