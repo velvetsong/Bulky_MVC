@@ -155,8 +155,8 @@ namespace BulkyBookWeb.Controllers
 		//}
 
 		#region  API Calls
-		[HttpGet]
 
+		[HttpGet]
         public IActionResult GetAll()
         {
             //var companyList = this.db.Company.GetAll();

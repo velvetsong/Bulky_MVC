@@ -19,7 +19,7 @@ namespace BulkyBook.DataAccess.Repository
             Category = new CategoryRepository(this.db);   /*this will give the CategoryRepository the ability to do the UPDATE*/
             CoverType = new  CoverTypeRepository(this.db);  /*this will cause the CoverTypeRepository the ability to do the UPDATE*/
             Product = new ProductRepository(this.db);   /*this will cause the ProductRepository the ability to do the UPDATE*/
-			Company = new CompanyRepository(this.db);   /*this will cause the ProductRepository the ability to do the UPDATE*/
+			Company = new CompanyRepository(this.db);   /*this will cause the CompanyRepository the ability to do the UPDATE*/
 		}
 
         public ICategoryRepository Category { get; private set; }
