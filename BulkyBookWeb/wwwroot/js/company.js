@@ -16,7 +16,7 @@ function loadDataTable() {
             { "data": "state", "width": "15%" },
             { "data": "phoneNumber", "width": "15%" },
             {
-                "data": 'id',
+                "data": 'id', 
                 "render": function (data) {
                     return `<div class="w-75 btn-group" role="group">
                      <a href="/company/createupdate?id=${data}" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>               
