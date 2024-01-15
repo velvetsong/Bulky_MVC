@@ -7,7 +7,7 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/Company/GetAll"
+            "url":"/Company/GetAll"
         },
         "columns": [
             { "data": "name", "width": "15%" },
@@ -23,7 +23,7 @@ function loadDataTable() {
                      <a onClick=Delete('/company/delete/${data}') class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
                     </div>`
                 },
-                "width": "25%"
+                "width": "15%"
             }
         ]
     });

@@ -187,10 +187,10 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
                 //  here we are populating the members of the ApplicationUser  OBJECT  fROM  what was entered within the Register.cshtml VIEW
+                //  which thereby   is the SAME  thing as formatting the AspNetUsers   Table,  because ApplicationUser Object is the SAME as AspNetUsers table
                 user.StreetAddress = Input.StreetAddress;
                 user.City = Input.City;
                 user.State = Input.State;
-                user.PostalCode = Input.PostalCode;
                 user.Name = Input.Name;
                 user.PhoneNumber = Input.PhoneNumber;
 

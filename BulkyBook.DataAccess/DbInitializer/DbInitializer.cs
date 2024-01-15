@@ -64,7 +64,6 @@ namespace BulkyBook.DataAccess.DbInitializer
                     PhoneNumber = "1112223333",
                     StreetAddress = "test 123 Ave",
                     State = "IL",
-                    PostalCode = "23422",
                     City = "Chicago"
                 }, "Admin123*").GetAwaiter().GetResult();
 
