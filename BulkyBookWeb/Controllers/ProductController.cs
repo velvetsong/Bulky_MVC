@@ -37,6 +37,7 @@ namespace BulkyBookWeb.Controllers
         public IEnumerable<Product> Products { get; set; }
         List<Product> products = new List<Product>();
 
+        [HttpGet]
         public IActionResult Index()
         {
             //   here you do NOT need the ToList() because you are assigning to an EXISTING defined LIST
