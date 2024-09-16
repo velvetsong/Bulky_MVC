@@ -12,18 +12,18 @@
        @* or you could say  ModelOnly   or  None*@
 
         <div class="mb-3">
-            <label asp-for="@Model.Name"></label>
-            <input asp-for="@Model.Name" class="form-control" />   @*  Bind this "Name" input field, to the Category Model "Name" property
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />   @*  Bind this "Name" input field, to the Category Model "Name" property
                                                               When this form is "Posted", it will POST an OBJECT of the Category CLASS
                                                               with the "Name" Property Populated  *@
-            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            <span asp-validation-for="Name" class="text-danger"></span>
             @*Name:*@
             @*<input type="text" name="categoryName" />*@
         </div>
         <div class="mb-3">
-            <label asp-for="@Model.DisplayOrder"></label>
-            <input asp-for="@Model.DisplayOrder" class="form-control" />
-            <span asp-validation-for="@Model.DisplayOrder" class="text-danger"></span>
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
         <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
