@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mssql3": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/bulkylibertymvc/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsBulkyLibertyLiveConnect_64A3A5CD0A",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/bulkyliberty/databases/bulky",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:BulkyLibertyLiveConnection"
+    }
+  }
+}
