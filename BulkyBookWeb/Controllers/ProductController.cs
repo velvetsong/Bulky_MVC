@@ -212,8 +212,8 @@ namespace BulkyBookWeb.Controllers
         //}
 
         #region  API Calls
-        [HttpGet]
 
+        [HttpGet]
         public IActionResult GetAll()
         {
             IEnumerable<Product> productList = this.db.Product.GetAll(includeNavigationProperties: "Category,CoverType");    //  do NOT PUT A SPACE INSIDE THIS STRING

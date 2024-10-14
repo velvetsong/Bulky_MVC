@@ -113,51 +113,51 @@ namespace BulkyBookWeb.Controllers
             return View(obj);
         }
 
-		////Get
-		//public IActionResult Delete(int? id)
-		//{
-		//    if (id == null || id == 0)
-		//    {
-		//        return NotFound();
-		//    }
+        ////Get
+        //public IActionResult Delete(int? id)
+        //{
+        //    if (id == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
 
-		//    //Company CompanyFromDb  = this.db.companies.FirstOrDefault(c => c.Id == id);   
-		//    //CompanyFromDb =  this.db.companies.SingleOrDefault(c => c.Id == id);
-		//    //Company? CompanyFromDb = this.db.companies.Find(id);
+        //    //Company CompanyFromDb  = this.db.companies.FirstOrDefault(c => c.Id == id);   
+        //    //CompanyFromDb =  this.db.companies.SingleOrDefault(c => c.Id == id);
+        //    //Company? CompanyFromDb = this.db.companies.Find(id);
 
-		//    //Company CompanyFromDb = this.db.GetFirstOrDefault(c => c.Id == id);
+        //    //Company CompanyFromDb = this.db.GetFirstOrDefault(c => c.Id == id);
 
-		//    //  Now use the UnitOfWork  General  handling of All Repositories
-		//    Company CompanyFromDb = this.db.Company.GetFirstOrDefault(c => c.Id == id);
+        //    //  Now use the UnitOfWork  General  handling of All Repositories
+        //    Company CompanyFromDb = this.db.Company.GetFirstOrDefault(c => c.Id == id);
 
-		//    if (CompanyFromDb == null || id == 0)
-		//    {
-		//        return NotFound();
-		//    }
-		//    return View(CompanyFromDb);
-		//}
+        //    if (CompanyFromDb == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(CompanyFromDb);
+        //}
 
 
-		////Post
-		//[HttpPost, ActionName("Delete")]
-		//[ValidateAntiForgeryToken]
-		//public IActionResult Delete(Company obj)
-		//{
-		//    //this.db.companies.Update(obj);
-		//    //this.db.SaveChanges();
-		//    //this.db.Remove(obj);
+        ////Post
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Delete(Company obj)
+        //{
+        //    //this.db.companies.Update(obj);
+        //    //this.db.SaveChanges();
+        //    //this.db.Remove(obj);
 
-		//    //  Now use the UnitOfWork  General  handling of All Repositories
-		//    this.db.Company.Remove(obj);
-		//    this.db.Save();
-		//    TempData["success"] = "Company was successfully Deleted";
-		//    TempData["error"] = string.Empty;
-		//    return RedirectToAction("Index");
-		//}
+        //    //  Now use the UnitOfWork  General  handling of All Repositories
+        //    this.db.Company.Remove(obj);
+        //    this.db.Save();
+        //    TempData["success"] = "Company was successfully Deleted";
+        //    TempData["error"] = string.Empty;
+        //    return RedirectToAction("Index");
+        //}
 
-		#region  API Calls
+        #region  API Calls
 
-		[HttpGet]
+        [HttpGet]
         public IActionResult GetAll()
         {
             var companyList = this.db.Company.GetAll();
