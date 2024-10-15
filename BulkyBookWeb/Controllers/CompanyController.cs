@@ -21,7 +21,7 @@ namespace BulkyBookWeb.Controllers
         //  Now use the UnitOfWork  General  handling of All Repositories
         //private readonly ICompanyRepository  db;
         private readonly IUnitOfWork db;
-  
+
         //public CompanyController(ICompanyRepository db)
         //  Now use the UnitOfWork  General  handling of All Repositories
         public CompanyController(IUnitOfWork db)
@@ -68,10 +68,10 @@ namespace BulkyBookWeb.Controllers
             }
             else
             {
-				company = this.db.Company.GetFirstOrDefault(u => u.Id == id);
-				// Update Company
-				// 
-			}
+                company = this.db.Company.GetFirstOrDefault(u => u.Id == id);
+                // Update Company
+                // 
+            }
             return View(company);   //  the Company  Index View  is  "Tightly"  Bound  to the Company Class
         }
 
@@ -83,7 +83,7 @@ namespace BulkyBookWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 //this.db.Companies.Update(obj);
                 //this.db.SaveChanges();
                 //this.db.Update(obj);
@@ -96,15 +96,15 @@ namespace BulkyBookWeb.Controllers
                     this.db.Company.Add(obj); // remember, the CreateUpdate VIEW  did all the work of POPULATING the Properties of the Company CLASS 
                     TempData["success"] = string.Empty;
                     TempData["success"] = "Company was successfully Created";
-					TempData["error"] = string.Empty;
-				}
+                    TempData["error"] = string.Empty;
+                }
                 else
                 {
                     this.db.Company.Update(obj);
                     TempData["success"] = string.Empty;
                     TempData["success"] = "Company was successfully Updated";
-					TempData["error"] = string.Empty;
-				}
+                    TempData["error"] = string.Empty;
+                }
 
                 this.db.Save();
 
@@ -168,7 +168,7 @@ namespace BulkyBookWeb.Controllers
         }
 
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int? id)
         {
             //  Now use the UnitOfWork  General  handling of All Repositories
