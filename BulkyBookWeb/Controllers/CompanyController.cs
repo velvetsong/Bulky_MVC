@@ -74,7 +74,8 @@ namespace BulkyBookWeb.Controllers
             }
             else
             {
-                company = this.db.Company.GetFirstOrDefault(u => u.Id == id);
+                company = this.db.Companies.SingleOrDefault(u => u.Id == id);
+                //company = this.db.Company.GetFirstOrDefault(u => u.Id == id);
                 // Update Company
                 // 
             }
@@ -99,20 +100,23 @@ namespace BulkyBookWeb.Controllers
                 if (obj.Id == 0)
                 {
                     //  Notice within this Action Method, there was NO ACTUAL Formatting to Populate the individual Properties of the Company CLASS
-                    this.db.Company.Add(obj); // remember, the CreateUpdate VIEW  did all the work of POPULATING the Properties of the Company CLASS 
+                    this.db.Companies.Add(obj); // remember, the CreateUpdate VIEW  did all the work of POPULATING the Properties of the Company CLASS 
+                    //this.db.Company.Add(obj); // remember, the CreateUpdate VIEW  did all the work of POPULATING the Properties of the Company CLASS
                     TempData["success"] = string.Empty;
                     TempData["success"] = "Company was successfully Created";
                     TempData["error"] = string.Empty;
                 }
                 else
                 {
-                    this.db.Company.Update(obj);
+                    this.db.Companies.Update(obj);
+                    //this.db.Company.Update(obj);
                     TempData["success"] = string.Empty;
                     TempData["success"] = "Company was successfully Updated";
                     TempData["error"] = string.Empty;
                 }
 
-                this.db.Save();
+                this.db.SaveChanges();
+                //this.db.Save();
 
                 return RedirectToAction("Index");
             }
@@ -166,7 +170,8 @@ namespace BulkyBookWeb.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var companyList = this.db.Company.GetAll();
+            var companyList = this.db.Companies;
+            //var companyList = this.db.Company.GetAll();
 
             //IEnumerable<Company> companyList = this.db.Company.GetAll();
 
@@ -177,8 +182,9 @@ namespace BulkyBookWeb.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int? id)
         {
+            var obj = this.db.Companies.SingleOrDefault(c => c.Id == id);
             //  Now use the UnitOfWork  General  handling of All Repositories
-            var obj = this.db.Company.GetFirstOrDefault(c => c.Id == id);
+            //var obj = this.db.Company.GetFirstOrDefault(c => c.Id == id);
            
 
             if (obj == null || id == 0)
@@ -187,8 +193,10 @@ namespace BulkyBookWeb.Controllers
             }
 
 
-            this.db.Company.Remove(obj);
-            this.db.Save();
+            this.db.Companies.Remove(obj);
+            //this.db.Company.Remove(obj);
+            this.db.SaveChanges(true);
+            //this.db.Save();
 
             return Json(new { success = true, message = "Delete Successful" });
         }
