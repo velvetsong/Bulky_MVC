@@ -1,4 +1,5 @@
-﻿using BulkyBook.DataAccess.Repository;
+﻿using BulkyBook.DataAccess;
+using BulkyBook.DataAccess.Repository;
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
@@ -17,14 +18,19 @@ namespace BulkyBookWeb.Controllers
     [Authorize(Roles = SD.Role_Admin)]
     public class CompanyController : Controller
     {
-        //private readonly AppDbContext db;
-        //  Now use the UnitOfWork  General  handling of All Repositories
+        private readonly AppDbContext db;
+
         //private readonly ICompanyRepository  db;
-        private readonly IUnitOfWork db;
+
+        //  Now use the UnitOfWork  General  handling of All Repositories
+        //private readonly IUnitOfWork db;
 
         //public CompanyController(ICompanyRepository db)
+
+        public CompanyController(AppDbContext db)
+
         //  Now use the UnitOfWork  General  handling of All Repositories
-        public CompanyController(IUnitOfWork db)
+        //public CompanyController(IUnitOfWork db)
         {
             this.db = db;
         }
@@ -39,7 +45,7 @@ namespace BulkyBookWeb.Controllers
         public IActionResult Index()
         {
             //   here you do NOT need the ToList() because you are assigning to an EXISTING defined LIST
-            //IEnumerable<Company> objCompanyList = this.db.Companies;
+            IEnumerable<Company> objCompanyList = this.db.Companies;
 
             //   need the ToList()  because assigning to a field
             //Companies = this.db.Companies.ToList();
@@ -53,8 +59,8 @@ namespace BulkyBookWeb.Controllers
             //Companies = this.db.Company.GetAll();
             //return View(Companies);
 
-            return View();
-            //return View(objCompanyList);
+            //return View();
+            return View(objCompanyList);
         }
 
         //Get
