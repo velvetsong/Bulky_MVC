@@ -16,7 +16,7 @@ using System.Drawing;
 namespace BulkyBookWeb.Controllers
 {
     //[Authorize(Roles = SD.Role_Admin)]
-    public class CompanyController : Controller
+    public class CompanyController :  Controller
     {
         //private readonly AppDbContext db;
 
